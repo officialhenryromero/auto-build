@@ -22,7 +22,7 @@ module.exports = function(app) {
             await exec(`cd ${process.env.REPOSITORY_FOLDER} && npm run build`);
     
             console.log('Starting application');
-            await exec(`pm2 start ${process.env.REPOSITORY_FOLDER}/dist/main.js --name ${process.env.APP_NAME} --exp-backoff-restart-delay=100`);
+            await exec(`cd ${process.env.REPOSITORY_FOLDER} && pm2 start dist/main.js  --name ${process.env.APP_NAME} --exp-backoff-restart-delay=100`);
 
             res.status(200);
             res.json({
